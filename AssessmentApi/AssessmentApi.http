@@ -1,0 +1,61 @@
+﻿@AssessmentApi_HostAddress = https://localhost:44383
+
+GET {{AssessmentApi_HostAddress}}/api/employee
+
+###
+
+GET {{AssessmentApi_HostAddres}}/api/employee/1
+
+###
+
+GET {{AssessmentApi_HostAddress}}/api/employee/Login/(email)/(password)?email=string&password=string
+
+###
+
+GET {{AssessmentApi_HostAddress}}/api/employee/Login/(email)/(password)?email=Azeezat@gmail.com&password=Azeeza@123
+
+###
+
+GET {{AssessmentApi_HostAddress}}/api/employee/Login/(email)/(password)?email=string&password=string
+
+###
+
+GET {{AssessmentApi_HostAddress}}/api/employee/login?email=string&password=string
+
+###
+
+GET {{AssessmentApi_HostAddress}}/api/employee/login/(email)/(password)?email=string&password=string
+
+###
+
+GET {{AssessmentApi_HostAddress}}/api/employee/TestLogin?Email=string&Password=string
+
+###
+
+GET {{AssessmentApi_HostAddress}}/api/employee/Login/(email)/(password)?email=string&password=string
+
+###
+
+GET {{AssessmentApi_HostAddress}}/api/Login?email=string&password=string
+
+###
+
+GET {{AssessmentApi_HostAddress}}/TestLogin?Email=string&Password=string
+
+###
+
+GET {{AssessmentApi_HostAddress}}/api/TestLogin?Email=Azeezat@gmail.com&Password=Azeeza@123
+
+###
+
+GET {{AssessmentApi_HostAddress}}/api/Login?email=string&password=string
+
+###
+
+POST {{AssessmentApi_HostAddress}}/api/Login?email=Azeezat@gmail.com&password=Azeeza@123
+
+###
+
+POST {{AssessmentApi_HostAddress}}/api/generateToken?Username=string
+
+###

@@ -27,28 +27,28 @@
                         <!--for username-->
                         <StackLayout Orientation="Horizontal" Grid.Row="1">
                             <Image Source="user.png" WidthRequest="30" HeightRequest="30"></Image>
-                            <Entry WidthRequest="300" HeightRequest="50" Margin="10,0,0,0" Placeholder="Username" FontAttributes="Bold"></Entry>
+                            <Entry Text="{Binding Username}" WidthRequest="300" HeightRequest="50" Margin="10,0,0,0" Placeholder="Username" FontAttributes="Bold"></Entry>
                         </StackLayout>
 
                         <!--for email address-->
                         <StackLayout Orientation="Horizontal">
-                            <Image Source="user.png" WidthRequest="30" HeightRequest="30"></Image>
-                            <Entry WidthRequest="300" HeightRequest="50" Margin="10,0,0,0" Placeholder="Email Address" FontAttributes="Bold"></Entry>
+                            <Image Source="email.png" WidthRequest="30" HeightRequest="30"></Image>
+                            <Entry Text="{Binding Email}" WidthRequest="300" HeightRequest="50" Margin="10,0,0,0" Placeholder="Email Address" FontAttributes="Bold"></Entry>
                         </StackLayout>
 
                         <!--for Name-->
                         <StackLayout Orientation="Horizontal" Grid.Row="1">
-                            <Image Source="user.png" WidthRequest="30" HeightRequest="30"></Image>
-                            <Entry WidthRequest="300" HeightRequest="50" Margin="10,0,0,0" Placeholder="Name" FontAttributes="Bold"></Entry>
+                            <Image Source="name.png" WidthRequest="30" HeightRequest="30"></Image>
+                            <Entry Text="{Binding Name}" WidthRequest="300" HeightRequest="50" Margin="10,0,0,0" Placeholder="Name" FontAttributes="Bold"></Entry>
                         </StackLayout>
                         
                         <!--for password-->
                         <StackLayout Orientation="Horizontal" Grid.Row="1">
-                            <Image Source="lock.png" WidthRequest="30" HeightRequest="30"></Image>
-                            <Entry WidthRequest="300" HeightRequest="50" Margin="10,0,0,0" Placeholder="Password" FontAttributes="Bold"></Entry>
+                            <Image Source="password.png" WidthRequest="30" HeightRequest="30"></Image>
+                            <Entry Text="{Binding Password}" WidthRequest="300" HeightRequest="50" Margin="10,0,0,0" Placeholder="Password" FontAttributes="Bold"></Entry>
                         </StackLayout>
 
-                        <Button  CornerRadius="0" HeightRequest="60" Text="Sign Up" FontSize="20" FontAttributes="Bold"/>
+                        <Button Command="{Binding SignupCommand}" CornerRadius="0" HeightRequest="60" Text="Sign Up" FontSize="20" FontAttributes="Bold"/>
 
 
                         <StackLayout Margin="0,35,0,0" Orientation="Horizontal" HorizontalOptions="Center">

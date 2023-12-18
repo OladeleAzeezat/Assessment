@@ -10,6 +10,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using AssessmentApi.Helper;
+using AutoMapper;
+using AssessmentApi.TableDTO;
 
 namespace AssessmentApi.Controllers
 {
@@ -17,16 +19,18 @@ namespace AssessmentApi.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
+        private readonly IMapper _mapper;
         private readonly AssessmentDbContext _context;
         private readonly IConfiguration _configuration;
 
-        public EmployeeController(AssessmentDbContext context, IConfiguration configuration)
+        public EmployeeController(AssessmentDbContext context, IConfiguration configuration, IMapper mapper)
         {
             _context = context;
             _configuration = configuration;
+            _mapper = mapper;
+
         }
 
-        // GET: api/Employee
         /// <summary>
         /// gets a list of Employee records
         /// </summary>
@@ -34,41 +38,47 @@ namespace AssessmentApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
-          if (_context.Employees == null )
-          {
-              return NotFound();
-          }
-            return await _context.Employees.ToListAsync();
+            // Check if there are no employees
+            if (!_context.Employees.Any())
+            {
+                return NotFound();
+            }
+
+            // Retrieve the list of employees
+            var employees = await _context.Employees.ToListAsync();
+
+            // Map the list of employees to a list of EmployeeDto
+            var empDTOs = _mapper.Map<List<EmployeeDto>>(employees);
+
+            return Ok(empDTOs);
         }
 
-        /// <summary>
-        /// gets Employee record by Employee Id
-        /// </summary>
         [Route("api/GetEmployeeById")]
         [HttpGet]
         public async Task<ActionResult<Employee>> GetEmployeeById(int id)
         {
             Employee employee = new Employee();
-          try
-          { 
-              if (_context.Employees == null)
-              {
-                  return  NotFound();
-              }
-              employee = await _context.Employees.Where(x => x.Id == id).FirstOrDefaultAsync();
+            try
+            {
+                if (_context.Employees == null)
+                {
+                    return NotFound();
+                }
+                employee = await _context.Employees.Where(x => x.Id == id).FirstOrDefaultAsync();
 
-             if (employee == null)
-             {
-                 return NotFound();
-             }
+                if (employee == null)
+                {
+                    return NotFound();
+                }
+                var empDTOs = _mapper.Map<EmployeeDto>(employee);
+                return Ok(empDTOs);
 
-                   // return employee;
-          }
-          catch (Exception ex)
-          {
+                // return employee;
+            }
+            catch (Exception ex)
+            {
                 throw;
-          }
-          return employee;
+            }
            
         }
 
@@ -77,16 +87,11 @@ namespace AssessmentApi.Controllers
         /// </summary>
         /// <param name="employee"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [Route("api/AddEmployees")]
         [HttpPost]
         public async Task<ActionResult<Employee>> AddEmployee(Employee employee)
         {
-            //if (!_context.Employees.Contains(employee))
-            //{
-            //    return Problem("Entity set 'AssessmentDbContext.Employees'  is null.");
-            //}
-
-
             StatusMessage statusMessage = new StatusMessage();
 
             try
@@ -134,7 +139,6 @@ namespace AssessmentApi.Controllers
         [HttpDelete("DeleteEmployee")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {
-            StatusMessage statusMessage = new StatusMessage();
             try
             {
                 var employeeDet = await _context.Employees.FindAsync(id);
@@ -142,23 +146,16 @@ namespace AssessmentApi.Controllers
                 {
                     _context.Entry(employeeDet).State = EntityState.Deleted;
                     _context.SaveChanges();
-
-                    statusMessage.Status = "Success";
-                    statusMessage.Message = "Deleted Successfully";
-
+                    var empDTOs = _mapper.Map<EmployeeDto>(employeeDet);
+                    return Ok(empDTOs);
                 }
-                else
-                {
-                    statusMessage.Status = "Failed";
-                    statusMessage.Message = "Record does not exist";
-                }
+                    return Ok("Record does not exist");
+
             }
             catch (Exception ex)
             {
-                statusMessage.Status = "Failed";
-                statusMessage.Message = ex.Message;
+                throw;
             }
-            return Ok(statusMessage);
             //if (_context.Employees == null)
             //{
             //    return NotFound();
@@ -193,7 +190,6 @@ namespace AssessmentApi.Controllers
             }
 
         }
-
 
         [AllowAnonymous]
         [HttpPost("api/TestLogin")]
@@ -230,7 +226,7 @@ namespace AssessmentApi.Controllers
 
         }
 
-
+        [AllowAnonymous]
         [Route("api/generateToken")]
         [HttpPost]
         public string generateToken(string Username)
@@ -263,6 +259,7 @@ namespace AssessmentApi.Controllers
                 return null;
             }
         }
+
 
 
     }

@@ -19,10 +19,11 @@ namespace AssessmentMaui
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddSingleton<SignupPage>();
-            builder.Services.AddSingleton<Item>();
+            builder.Services.AddSingleton<ItemPage>();
             builder.Services.AddSingleton<Views.Contact>();
             builder.Services.AddSingleton<LoginPageViewModel>();
             builder.Services.AddSingleton<SignupViewModel>();
+            builder.Services.AddSingleton<ItemViewModel>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

@@ -1,3 +1,4 @@
+using AssessmentApi;
 using AssessmentApi.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,8 @@ builder.Services.AddAuthentication(x =>
 
         };
     });
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
 

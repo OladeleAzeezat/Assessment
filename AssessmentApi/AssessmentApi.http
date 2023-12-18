@@ -59,3 +59,33 @@ POST {{AssessmentApi_HostAddress}}/api/Login?email=Azeezat@gmail.com&password=Az
 POST {{AssessmentApi_HostAddress}}/api/generateToken?Username=string
 
 ###
+
+POST {{AssessmentApi_HostAddress}}/api/AddEmployees
+Content-Type: application/json
+
+{
+  //Employee
+  
+}
+
+###
+
+POST {{AssessmentApi_HostAddress}}/api/Login?email=Azeezat@gmail.com&password=Azeeza@123
+
+###
+
+POST {{AssessmentApi_HostAddress}}/api/TestLogin?Email=Azeezat@gmail.com&Password=Azeeza@123
+
+###
+
+POST {{AssessmentApi_HostAddress}}/api/Login?email=Azeezat@gmail.com&password=Azeeza@123
+
+###
+
+GET {{AssessmentApi_HostAddress}}/api/GetItem
+
+###
+
+DELETE {{AssessmentApi_HostAddress}}/DeleteItem?id=0
+
+###

@@ -10,5 +10,6 @@ namespace AssessmentApi.Data
         }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Item> Items { get; set; }
     }
 }

@@ -22,13 +22,11 @@
         FlyoutItemIsVisible="False"
         Shell.FlyoutBehavior="Disabled"/>
 
-  <!--//ShellContent ContentTemplate="{DataTemplate local:si-->
-    
     <!--Sidebar-->
     <FlyoutItem Route="HomePae" FlyoutDisplayOptions="AsMultipleItems" >
         <ShellContent Title="Home" Icon="house.svg"  ContentTemplate="{DataTemplate views:HomePage}"></ShellContent>
         <ShellContent Title="Contact Us" Icon="envelope.svg" ContentTemplate="{DataTemplate views:Contact}"></ShellContent>
-        <ShellContent Title="Items" Icon="items.svg" ContentTemplate="{DataTemplate views:Item}"></ShellContent>
+        <ShellContent Title="Items" Icon="items.svg" ContentTemplate="{DataTemplate views:ItemPage}"></ShellContent>
     </FlyoutItem>
     
     <!--Sidebar Footer-->

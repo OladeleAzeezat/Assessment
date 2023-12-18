@@ -17,7 +17,7 @@ public partial class AppShellViewModel : ObservableObject
         {
             Preferences.Remove(nameof(App.employee));
         }
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync("//LoginPage");
     }
 } 
 

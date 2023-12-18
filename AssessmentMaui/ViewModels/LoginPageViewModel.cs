@@ -17,27 +17,24 @@ public partial class LoginPageViewModel : ObservableObject
 
     readonly IAssessmentRepository assessment = new AssessmentService();
 
-    private string _jwtToken;
+    //private string _jwtToken;
 
-    public string JwtToken
-    {
-        get { return _jwtToken; }
-        set
-        {
-            if (_jwtToken != value)
-            {
-                _jwtToken = value;
-                OnPropertyChanged(nameof(JwtToken));
-            }
-        }
-    }
+    //public string JwtToken
+    //{
+    //    get { return _jwtToken; }
+    //    set
+    //    {
+    //        if (_jwtToken != value)
+    //        {
+    //            _jwtToken = value;
+    //            OnPropertyChanged(nameof(JwtToken));
+    //        }
+    //    }
+    //}
 
     [RelayCommand]
     public async void SignIn()
     {
-        //to check if internet connection is active
-        //if(Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
-
         try
         {
             if(!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password))
@@ -54,9 +51,9 @@ public partial class LoginPageViewModel : ObservableObject
                         Preferences.Remove(nameof(App.employee));
                     }
 
-                    JwtToken = await assessment.GetTokenFromApi();
+                    //JwtToken = await assessment.GetTokenFromApi();
 
-                    await SecureStorage.SetAsync(nameof(App.Token), JwtToken);
+                    //await SecureStorage.SetAsync(nameof(App.Token), JwtToken);
 
                     string empDetails = JsonConvert.SerializeObject(employee);
                     Preferences.Set(nameof(App.employee), empDetails);

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:AssessmentMaui.ViewModels"
+             x:DataType="viewmodel:ItemViewModel"             
+             x:Class="AssessmentMaui.Views.ItemPage"
+             Title="Item">
+    <!--<VerticalStackLayout>
+        <StackLayout>
+            <ListView ItemsSource="{Binding ItemsCommand}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" Detail="{Binding Description}"  />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <HorizontalStackLayout>
+                <Entry Placeholder="Name" Text="{Binding SelectedItem.Name, Mode=TwoWay}" />
+                <Entry Placeholder="Description" Text="{Binding SelectedItem.Description, Mode=TwoWay}" />
+
+                <Button Text="Add" Command="{Binding AddCommand}" />
+                <Button Text="Edit" Command="{Binding EditCommand}" />
+                <Button Text="Delete" Command="{Binding DeleteCommand}" />
+            </HorizontalStackLayout>
+
+        </StackLayout>
+    </VerticalStackLayout>-->
+
+
+    <!--BackgroundColor="{DynamicResource PageBackgroundColor}">-->
+
+        <StackLayout>
+            <!-- Add button outside the table -->
+        <Button Text="Add" Command="{Binding AddCommand}" />
+
+            <!-- Table with edit and delete buttons -->
+        <CollectionView x:Name="itemCollectionView" SelectionMode="Single" ItemsSource="{Binding Items}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                        <HorizontalStackLayout>
+
+                            <Label Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="DeepSkyBlue" FontSize="Small" />
+                            <Label Text="{Binding Description}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="DeepSkyBlue" FontSize="Small"/>
+                           
+                            <!-- Edit button -->
+                            <Button Text="Edit" Grid.Column="1" Command="{Binding EditCommand}" />
+
+                            <!-- Delete button -->
+                            <Button Text="Delete" Grid.Column="2" Command="{Binding DeleteCommand}" />
+                        </HorizontalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+
+
+
+
+</ContentPage>

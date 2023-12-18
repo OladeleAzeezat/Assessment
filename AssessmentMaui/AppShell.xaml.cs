@@ -12,7 +12,7 @@ namespace AssessmentMaui
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(SignupPage), typeof(SignupPage));
-            Routing.RegisterRoute(nameof(Item), typeof(Item));
+            Routing.RegisterRoute(nameof(ItemPage), typeof(ItemPage));
             Routing.RegisterRoute(nameof(Views.Contact), typeof(Views.Contact));
 
         }
